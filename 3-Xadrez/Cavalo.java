@@ -21,7 +21,7 @@ import static java.lang.Math.*;
 
 public class Cavalo extends Pecas{
 
-	public Cavalo(String name, String color, String category, int x, int y)
+	public Cavalo(String name, String color, String category, short x, short y)
 	{
 		nome = name;
 		cor = color;
