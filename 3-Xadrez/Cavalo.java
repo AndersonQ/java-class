@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Pecas.java
+ *       Filename:  Cavalo.java
  *
  *    Description:  
  *
+ *
  *        Version:  1.0
- *        Created:  18-06-2010 17:08:08
+ *        Created:  22-06-2010 22:49:09
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,14 +17,16 @@
  * =====================================================================================
  */
 
-public abstract class Pecas{
+import static java.lang.Math.*;
 
-	String nome;
-	String cor;
-	String categoria;
-	short l, c;
-	boolean capturada;
+public class Cavalo extends Pecas{
 
-	public abstract boolean move(int x, int y);
+	public boolean move(int x, int y)
+	{
+		if ( hypot((x - l),(y - c)) == 5 )
+			return true;
+		else
+			return false;
+	}
+
 }
-

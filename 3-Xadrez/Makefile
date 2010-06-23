@@ -1,10 +1,15 @@
 .PHONY: clean
 
-all: Pecas.class
+all: Xadrez
+
+Xadrez: Pecas.class Cavalo.class
 
 
 Pecas.class: Pecas.java
 	javac Pecas.java
+
+Cavalo.class: Cavalo.java
+	javac Cavalo.java
 
 
 clean:
