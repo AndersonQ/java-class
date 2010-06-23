@@ -21,6 +21,16 @@ import static java.lang.Math.*;
 
 public class Cavalo extends Pecas{
 
+	public Cavalo(String name, String color, String category, int x, int y)
+	{
+		nome = name;
+		cor = color;
+		categoria = category;
+		capturada = false;
+		l = x;
+		c = y;
+	}
+
 	public boolean move(int x, int y)
 	{
 		if ( hypot((x - l),(y - c)) == 5 )
