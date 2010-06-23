@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Peca.
+ *       Filename:  Pecas.java
  *
  *    Description:  
  *
@@ -16,4 +16,14 @@
  * =====================================================================================
  */
 
+public abstract class Pecas{
+
+	String nome;
+	String cor;
+	String categoria;
+	short x, y;
+	boolean capturada;
+
+	public abstract boolean move(int x, int y);
+}
 
