@@ -21,7 +21,8 @@ public class Tabuleiro
 	//protected ArrayList<Jogadas> jogadas;
 	protected Pecas [][] board;
 	protected ArryList<Pecas> capturadas;
-	String NextPlay;
+	private Date d;
+	private String NextPlay;
 
 	public Tabuleiro()
 	{

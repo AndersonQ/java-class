@@ -2,7 +2,7 @@
 
 all: Xadrez
 
-Xadrez: Pecas.class Cavalo.class Rei.class
+Xadrez: Pecas.class Cavalo.class Rei.class Jogadas.class
 
 
 Pecas.class: Pecas.java
@@ -13,6 +13,9 @@ Cavalo.class: Cavalo.java
 
 Rei.class: Rei.java
 	javac Rei.java
+
+Jogadas.class: Jogadas.java
+	javac Jogadas.java
 
 
 clean:
