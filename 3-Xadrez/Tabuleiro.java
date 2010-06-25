@@ -16,20 +16,28 @@
  * =====================================================================================
  */
 
+import java.util.Date;
+import java.util.ArrayList;
+
 public class Tabuleiro
 {
-	//protected ArrayList<Jogadas> jogadas;
+	protected ArrayList<Jogadas> jogadas;
 	protected Pecas [][] board;
-	protected ArryList<Pecas> capturadas;
+	protected ArrayList<Pecas> capturadas;
 	private Date d;
 	private String NextPlay;
+	private int j;
 
 	public Tabuleiro()
 	{
-		//jogadas = new ArrayList<Jogadas>;
+		jogadas = new ArrayList<Jogadas>();
 		board = new Pecas[8][8];
-		capturadas = new ArrayList<Pecas>;
+		capturadas = new ArrayList<Pecas>();
+		d = new Date();
 		NextPlay = "branca";
+		j = 0;
+
+		//make_board();
 	}
 }
 
