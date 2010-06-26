@@ -44,13 +44,13 @@ public class Tabuleiro
 			for (int j = 0; j < 0; j++)
 				board[i][j] = null;
 
-		board[0][1] = new Cavalo("Cavalo_Preto1", "preta", "cavalo", 0, 1);
-		board[0][6] = new Cavalo("Cavalo_Preto2", "preta", "cavalo"    , 0, 6);
+		board[0][1] = new Cavalo("Cavalo_Preto", "preta", "cavalo", 0, 1);
+		board[0][6] = new Cavalo("Cavalo_Preto", "preta", "cavalo"    , 0, 6);
 		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 0, 4);
 
-		board[7][1] = new Cavalo("Cavalo_Branco1", "branca", "cavalo"    , 7, 1);
-		board[7][6] = new Cavalo("Cavalo_Branco2", "branca", "cavalo"    , 7, 6);
-		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 7, 4);
+		board[7][1] = new Cavalo("Cavalo_Branco", "branca", "cavalo"    , 7, 1);
+		board[7][6] = new Cavalo("Cavalo_Branco", "branca", "cavalo"    , 7, 6);
+		board[7][4] = new Rei("Rei_Branco", "branca", "rei", 7, 4);
 	}
 
 	public boolean play(int li, int ci, int lf, int cf) throws WrongPlay
@@ -60,12 +60,17 @@ public class Tabuleiro
 
 		p = board[li][ci];
 		
-		if ( p.cor != NextPlay )
-			throw new WrongPlay("Não é a vez das " + p.cor + "s jogar");
-		try{
-		ok = p.move(lf,cf);}
-		catch(WrongPlay e){
-		ok = false;}
+		if ( p.get_cor() != NextPlay )
+			throw new WrongPlay("Não é a vez das " + p.get_cor() + "s jogar");
+		try
+		{
+			ok = p.move(lf,cf);
+		}
+		catch(WrongPlay e)
+		{
+			System.out.println(e.PrintWrongPlay());
+			ok = false;
+		}
 		
 
 		if (ok == true)
@@ -76,7 +81,24 @@ public class Tabuleiro
 			j++;
 		}
 
-
 		return ok;
+	}
+
+	public void print_board()
+	{
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j <8; j++)
+			{
+				if (board[i][j] == null)
+					System.out.printf("\t____");
+				else if (board[i][j].get_categoria() == "cavalo")
+					System.out.printf("\t_%s%s_", (board[i][j].get_nome()).substring(0,1), (board[i][j].get_nome()).substring(7,8));
+				else if (board[i][j].get_categoria() == "rei")
+					System.out.printf("\t_%s%s_", (board[i][j].get_nome()).substring(0,1), (board[i][j].get_nome()).substring(4,5));
+			}
+			System.out.printf("\n");
+		}
+
 	}
 }
