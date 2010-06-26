@@ -16,6 +16,8 @@
  * =====================================================================================
  */
 
+import java.io.*;
+
 public abstract class Pecas{
 
 	String nome;
@@ -24,6 +26,6 @@ public abstract class Pecas{
 	short l, c;
 	boolean capturada;
 
-	public abstract boolean move(int x, int y);
+	public abstract boolean move(int x, int y) throws WrongPlay;
 }
 

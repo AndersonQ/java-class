@@ -18,6 +18,7 @@
  */
 
 import static java.lang.Math.*;
+import java.io.*;
 
 public class Cavalo extends Pecas{
 
@@ -31,12 +32,12 @@ public class Cavalo extends Pecas{
 		c = y;
 	}
 
-	public boolean move(int x, int y)
+	public boolean move(int x, int y) throws WrongPlay
 	{
 		if ( hypot((x - l),(y - c)) == 5 )
 			return true;
 		else
-			return false;
+			throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");
 	}
 
 }
