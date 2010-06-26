@@ -22,7 +22,7 @@ import java.io.*;
 
 public class Rei extends Pecas{
 
-	public Rei(String name, String color, String category, short x, short y)
+	public Rei(String name, String color, String category, int x, int y)
 	{
 		nome = name;
 		cor = color;

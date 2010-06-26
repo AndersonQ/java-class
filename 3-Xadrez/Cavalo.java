@@ -22,7 +22,7 @@ import java.io.*;
 
 public class Cavalo extends Pecas{
 
-	public Cavalo(String name, String color, String category, short x, short y)
+	public Cavalo(String name, String color, String category, int x, int y)
 	{
 		nome = name;
 		cor = color;

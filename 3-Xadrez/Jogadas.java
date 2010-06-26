@@ -25,8 +25,9 @@ public class Jogadas
 	private String tempo;
 	private int li, ci, lf, cf;
 
-	public Jogadas(Pecas p, int j, String tempo, int li, int ci, int lf, int cf, Date d)
+	public Jogadas(Pecas p, int j, int li, int ci, int lf, int cf)
 	{
+		Date d = new Date();
 		this.p = p;
 		this.j = j;
 		this.tempo = this.tempo.format("\n\n%d/%d/%d %d:%d:%d\n\n", d.getDate(), d.getMonth(), d.getYear() + 1900, d.getHours(), d.getMinutes(), d.getSeconds());

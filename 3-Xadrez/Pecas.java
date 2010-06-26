@@ -23,7 +23,7 @@ public abstract class Pecas{
 	String nome;
 	String cor;
 	String categoria;
-	short l, c;
+	int l, c;
 	boolean capturada;
 
 	public abstract boolean move(int x, int y) throws WrongPlay;
