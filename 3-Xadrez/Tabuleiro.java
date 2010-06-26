@@ -42,14 +42,32 @@ public class Tabuleiro
 
 	private void make_board()
 	{
-		board[0][1] = new Cavalo("Cavalo_Preto1", "preto", "cavalo", 0, 1);
-		board[0][6] = new Cavalo("Cavalo_Preto2", "preto", "cavalo"    , 0, 6);
-		board[0][4] = new Rei("Rei_Preto", "preto", "rei", 0, 4);
+		board[0][1] = new Cavalo("Cavalo_Preto1", "preta", "cavalo", 0, 1);
+		board[0][6] = new Cavalo("Cavalo_Preto2", "preta", "cavalo"    , 0, 6);
+		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 0, 4);
 
-		board[7][1] = new Cavalo("Cavalo_Branco1", "branco", "cavalo"    , 7, 1);
-		board[7][6] = new Cavalo("Cavalo_Branco2", "branco", "cavalo"    , 7, 6);
-		board[0][4] = new Rei("Rei_Preto", "preto", "rei", 7, 4);
+		board[7][1] = new Cavalo("Cavalo_Branco1", "branca", "cavalo"    , 7, 1);
+		board[7][6] = new Cavalo("Cavalo_Branco2", "branca", "cavalo"    , 7, 6);
+		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 7, 4);
+	}
+
+	public boolean play(int li, int ci, int lf, int cf)
+	{
+		Pecas p;
+		boolean ok;
+
+		p = board[li][ci];
+		
+		if ( p != NextPlay )
+			throw new WrongPlay("Não é a vez das " + p.cor + "s jogar");
+
+		ok = p.move(lf,cf);
+
+		if (ok == true)
+		{
+			board[li][ci] = null;
+			board[lf][cf] = p;
+
+		return ok;
+	}
 }
-
-
-	
