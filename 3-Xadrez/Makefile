@@ -17,6 +17,9 @@ Rei.class: Rei.java
 Jogadas.class: Jogadas.java
 	javac Jogadas.java
 
+Tabuleiro.class: Tabuleiro.java
+	javac Tabuleiro.java
+
 
 clean:
 	@rm -vf *.class *.backup *~
