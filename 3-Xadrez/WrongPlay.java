@@ -20,8 +20,16 @@ import java.io.IOException;
 
 public class WrongPlay extends IOException
 {
+	private String msg;
+
 	public WrongPlay(String msg)
 	{
 		super(msg);
+		this.msg = msg;
+	}
+
+	public String PrintWrongPlay()
+	{
+		return msg;
 	}
 }
