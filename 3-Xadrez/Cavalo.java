@@ -34,10 +34,17 @@ public class Cavalo extends Pecas{
 
 	public boolean move(int x, int y) throws WrongPlay
 	{
-		if ( hypot((x - l),(y - c)) == 5 )
+		if ( hypot2(x,y) == 5)
 			return true;
 		else
+		{
 			throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");
+		}
+	}
+
+	private double hypot2(int x, int y)
+	{
+		return (pow( (x - l) , 2) + pow( (y - c), 2)); 
 	}
 
 }
