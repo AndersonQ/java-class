@@ -20,12 +20,27 @@ import java.io.*;
 
 public abstract class Pecas{
 
-	String nome;
-	String cor;
-	String categoria;
-	int l, c;
-	boolean capturada;
+	protected String nome;
+	protected String cor;
+	protected String categoria;
+	protected int l, c;
+	protected boolean capturada;
 
 	public abstract boolean move(int x, int y) throws WrongPlay;
+
+	public String get_nome()
+	{
+		return nome;
+	}
+	
+	public String get_cor()
+	{
+		return cor;
+	}
+
+	public String get_categoria()
+	{
+		return categoria;
+	}
 }
 
