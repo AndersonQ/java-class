@@ -20,6 +20,9 @@ Jogadas.class: Jogadas.java
 Tabuleiro.class: Tabuleiro.java
 	javac Tabuleiro.java
 
+play: Xadrez
+	java Xadrez
+
 
 clean:
 	@rm -vf *.class *.backup *~

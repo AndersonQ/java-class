@@ -33,7 +33,7 @@ public class Tabuleiro
 		board = new Pecas[8][8];
 		capturadas = new ArrayList<Pecas>();
 		NextPlay = "branca";
-		j = 0;
+		j = 1;
 
 		make_board();
 	}
@@ -79,6 +79,9 @@ public class Tabuleiro
 			board[lf][cf] = p;
 			jogadas.add(new Jogadas(p, j, li, ci, lf, cf));
 			j++;
+
+			NextPlay = (NextPlay == "branca") ? "preta" : "branca";
+			System.out.println( "Jogada: " + ( jogadas.get( jogadas.size() -1 ) ).print_play() );
 		}
 
 		return ok;
@@ -100,5 +103,13 @@ public class Tabuleiro
 			System.out.printf("\n");
 		}
 
+	}
+
+	public void list_moves()
+	{
+		for(Jogadas j : jogadas)
+		{
+			System.out.println(j.print_play());
+		}
 	}
 }

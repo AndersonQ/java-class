@@ -30,11 +30,18 @@ public class Jogadas
 		Date d = new Date();
 		this.p = p;
 		this.j = j;
-		this.tempo = this.tempo.format("\n\n%d/%d/%d %d:%d:%d\n\n", d.getDate(), d.getMonth(), d.getYear() + 1900, d.getHours(), d.getMinutes(), d.getSeconds());
+		this.tempo = this.tempo.format("%d/%d/%d %d:%d:%d", d.getDate(), d.getMonth(), d.getYear() + 1900, d.getHours(), d.getMinutes(), d.getSeconds());
 		this.li = li;
 		this.ci = ci;
 		this.lf = lf;
 		this.cf = cf;
+	}
+
+	public String print_play()
+	{
+		String s = new String();
+		s = s.format("%d°: %s de (%d,%d,) para (%d,%d) em %s", j, p.get_nome(), li, ci, lf, cf, tempo);
+		return s;
 	}
 }
 
