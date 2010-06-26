@@ -24,7 +24,6 @@ public class Tabuleiro
 	protected ArrayList<Jogadas> jogadas;
 	protected Pecas [][] board;
 	protected ArrayList<Pecas> capturadas;
-	private Date d;
 	private String NextPlay;
 	private int j;
 
@@ -33,7 +32,6 @@ public class Tabuleiro
 		jogadas = new ArrayList<Jogadas>();
 		board = new Pecas[8][8];
 		capturadas = new ArrayList<Pecas>();
-		d = new Date();
 		NextPlay = "branca";
 		j = 0;
 
@@ -42,6 +40,10 @@ public class Tabuleiro
 
 	private void make_board()
 	{
+		for (int i = 0; i < 8; i++)
+			for (int j = 0; j < 0; j++)
+				board[i][j] = null;
+
 		board[0][1] = new Cavalo("Cavalo_Preto1", "preta", "cavalo", 0, 1);
 		board[0][6] = new Cavalo("Cavalo_Preto2", "preta", "cavalo"    , 0, 6);
 		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 0, 4);
@@ -51,22 +53,29 @@ public class Tabuleiro
 		board[0][4] = new Rei("Rei_Preto", "preta", "rei", 7, 4);
 	}
 
-	public boolean play(int li, int ci, int lf, int cf)
+	public boolean play(int li, int ci, int lf, int cf) throws WrongPlay
 	{
 		Pecas p;
 		boolean ok;
 
 		p = board[li][ci];
 		
-		if ( p != NextPlay )
+		if ( p.cor != NextPlay )
 			throw new WrongPlay("Não é a vez das " + p.cor + "s jogar");
-
-		ok = p.move(lf,cf);
+		try{
+		ok = p.move(lf,cf);}
+		catch(WrongPlay e){
+		ok = false;}
+		
 
 		if (ok == true)
 		{
 			board[li][ci] = null;
 			board[lf][cf] = p;
+			jogadas.add(new Jogadas(p, j, li, ci, lf, cf));
+			j++;
+		}
+
 
 		return ok;
 	}
