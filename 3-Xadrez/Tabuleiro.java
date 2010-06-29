@@ -62,7 +62,7 @@ public class Tabuleiro
 	
 		//Verifica se existe peça na posição indicada	
 		if( p == null )
-			throw new WrongPlay("Não existe peça nessa posição!");
+			throw new WrongPlay("Não existe peça na posição (" + li + "," + ci + ")!");
 
 		//Verifica se é a vez da cor jogar
 		if ( p.get_cor() != NextPlay )
@@ -91,7 +91,7 @@ public class Tabuleiro
 					(board[lf][cf]).set_capturada(jo);
 				}
 				else
-					throw new WrongPlay("Jogada Inválida! " + p.get_cor() + "s" + "não pode capturar peças " + (board[lf][cf]).get_cor() + "s!");
+					throw new WrongPlay("Jogada Inválida! " + p.get_cor() + "s" + " não podem capturar peças " + (board[lf][cf]).get_cor() + "s!");
 			}
 
 			//Move as peças no tabuleiro
