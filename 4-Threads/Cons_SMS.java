@@ -16,7 +16,9 @@
  * =====================================================================================
  */
 
-public calss Cons_SMS implements Runnable
+import static java.lang.Math.*;
+
+public class Cons_SMS implements Runnable
 {
 	Fila<Mensagem> f;
 
@@ -25,9 +27,9 @@ public calss Cons_SMS implements Runnable
 		this.f = f;
 	}
 
-	public run()
+	public void run()
 	{
-		Mensagem m;
+		Mensagem m = null;
 		int tempo = 200 + (int) (random() * 600);
 
 		try
@@ -37,6 +39,7 @@ public calss Cons_SMS implements Runnable
 		catch (InterruptedException e)
 		{
 			System.out.println(e);
+			return;
 		}
 
 		System.out.println(m + "Enviada para o celular " + m.get_Dest_cel());
