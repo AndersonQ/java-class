@@ -27,8 +27,8 @@ jar: main-class Xadrez.class
 	jar cfm Xadrez.jar main-class *.java *.class
 
 tar:
-	rm -vf Pratica_2.tar.bz2
-	tar -jcvf Pratica_2.tar.bz2 *
+	rm -vf Xadrez.tar.bz2
+	tar -jcvf Xadrez.tar.bz2 *
 
 clean:
 	@rm -vf *.class *.backup *~
