@@ -27,14 +27,14 @@ public class Rei extends Pecas{
 		nome = name;
 		cor = color;
 		categoria = category;
-		capturada = null;//false;
+		capturada = null;
 		l = x;
 		c = y;
 	}
 
 	public boolean move(int x, int y) throws WrongPlay
 	{
-		if ( hypot( (x - l), (y - c) ) == 1 || hypot( (x - l), (y - c) ) < 2)
+		if ( hypot( (x - l), (y - c) ) < 2) //hypot( (x - l), (y - c) ) == 1 || hypot( (x - l), (y - c) ) < 2)
 		{
 			l = x;
 			c = y;
