@@ -1,6 +1,6 @@
-.PHONY: clean
+.PHONY: clean tar
 
-all: Xadrez
+all: Xadrez.class
 
 Xadrez.class: Pecas.class Cavalo.class Rei.class Jogadas.class Xadrez.java Tabuleiro.class
 	javac Xadrez.java
@@ -23,6 +23,12 @@ Tabuleiro.class: Tabuleiro.java
 play: Xadrez.class
 	java Xadrez
 
+jar: main-class Xadrez.class
+	jar cfm Xadrez.jar main-class *.java *.class
+
+tar:
+	rm -vf Pratica_2.tar.bz2
+	tar -jcvf Pratica_2.tar.bz2 *
 
 clean:
 	@rm -vf *.class *.backup *~
