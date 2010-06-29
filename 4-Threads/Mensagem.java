@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-import static java.lang.Math;
+import static java.lang.Math.*;
 
 public class Mensagem
 {
@@ -38,13 +38,13 @@ public class Mensagem
 	public Mensagem(String msg)
 	{
 		this.ID = IDcont;
-		this.Orig_Cel = random(); *100000000;
-		this.Dest_Cel = random(); *100000000;
+		this.Orig_Cel = (int) (random() *100000000);
+		this.Dest_Cel = (int) (random() *100000000);
 		this.msg = "Mensagem aleatória " + ID;
 		IDcont++;
 	}
 
-	public get_msg()
+	public String get_msg()
 	{
 		return msg;
 	}
