@@ -48,4 +48,14 @@ public class Mensagem
 	{
 		return msg;
 	}
+
+	public String get_Dest_cel()
+	{
+		return Dest_Cel;
+	}
+
+	public String get_Orig_cel()
+	{
+		return Orig_Cel;
+	}
 }
