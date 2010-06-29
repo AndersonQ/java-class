@@ -73,6 +73,7 @@ public class Xadrez
 
 		System.out.printf("\nLista das jogadas realizadas:\n");
 		t.list_moves();
+		System.out.printf("\nLista das peças capturadas:\n");
 		t.list_capturadas();
 		System.out.printf("\n");
 
@@ -103,7 +104,6 @@ public class Xadrez
 			try
 			{
 				t.play(li,ci,lf,cf);
-				t.list_capturadas();
 			}
 			catch(WrongPlay e )
 			{
@@ -117,6 +117,12 @@ public class Xadrez
 				exit = true;
 
 		}
+
+		System.out.printf("\nLista das jogadas realizadas:\n");
+		t.list_moves();
+		System.out.printf("\nLista das peças capturadas:\n");
+		t.list_capturadas();
+		System.out.printf("\n");
 
 	}
 }
