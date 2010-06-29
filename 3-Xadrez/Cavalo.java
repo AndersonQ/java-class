@@ -27,7 +27,7 @@ public class Cavalo extends Pecas{
 		nome = name;
 		cor = color;
 		categoria = category;
-		capturada = null;//false;
+		capturada = null;
 		l = x;
 		c = y;
 	}
@@ -42,7 +42,7 @@ public class Cavalo extends Pecas{
 		}
 		else
 		{
-			throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");
+			return false;//throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");
 		}
 	}
 
