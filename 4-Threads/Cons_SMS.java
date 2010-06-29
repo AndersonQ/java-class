@@ -20,9 +20,9 @@ import static java.lang.Math.*;
 
 public class Cons_SMS implements Runnable
 {
-	Fila<Mensagem> f;
+	FilaPC<Mensagem> f;
 
-	public Cons_SMS(Fila f)
+	public Cons_SMS(FilaPC<Mensagem> f)
 	{
 		this.f = f;
 	}
@@ -37,7 +37,9 @@ public class Cons_SMS implements Runnable
 
 		try
 		{
-			m = f.retira();
+			Thread.sleep(tempo);
+			m = (Mensagem) f.retira();
+			System.out.println(m + " Enviada para o celular " + m.get_Dest_cel());
 		}
 		catch (InterruptedException e)
 		{
@@ -45,7 +47,6 @@ public class Cons_SMS implements Runnable
 			return;
 		}
 
-		System.out.println(m + "Enviada para o celular " + m.get_Dest_cel());
 		}
 	}
 }

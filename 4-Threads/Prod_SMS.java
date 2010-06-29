@@ -20,9 +20,9 @@ import static java.lang.Math.*;
 
 public class Prod_SMS implements Runnable
 {
-	Fila<Mensagem> f;
+	FilaPC<Mensagem> f;
 
-	public Prod_SMS(Fila f)
+	public Prod_SMS(FilaPC<Mensagem> f)
 	{
 		this.f = f;
 	}
@@ -36,14 +36,6 @@ public class Prod_SMS implements Runnable
 		try
 		{
 			Thread.sleep(tempo);
-		}
-		catch (InterruptedException e)
-		{
-			e.printStackTrace();
-		}
-
-		try
-		{
 			f.insere(new Mensagem());
 		}
 		catch(InterruptedException e)

@@ -18,11 +18,11 @@
 
 public class CentralSMS
 {
-	FilaPC f;
+	FilaPC<Mensagem> f;
 
 	public CentralSMS()
 	{
-		f = new FilaPC(1000);
+		f = new FilaPC<Mensagem>(1000);
 	}
 
 	public void start()
