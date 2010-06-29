@@ -18,31 +18,47 @@
 
 public class FilaPC extends Fila
 {
-	public FilaPC()
+	public FilaPC(int i)
 	{
-		super();
+		super(i);
 	}
 
-	public synchronized void insere(Tipo el) throws InterruptedException
+	public synchronized void insere(Mensagem el) throws InterruptedException
 	{
-		if (cheia() == true)
-			this.wait();
+		try
+		{
+
+			if (cheia() == true)
+				this.wait();
 		
-		super.insere(el);
+			super.insere(el);
 		
-		this.notfy();
+			this.notify();
+		}
+		catch(InterruptedException e)
+		{
+			System.out.println(e);
+		}
 	}
 
-	public Tipo retira() throws InterruptedException
+	public Mensagem retira() throws InterruptedException
 	{
-		Tipo el;
+		Mensagem el;
 
-		if (vazia() == true)
-			this.wait();
+		try
+		{
+			if (vazia() == true)
+				this.wait();
 
-		el = super.retita();
+			el = (Mensagem) super.retira();
 
-		this.notify();
+			this.notify();
+		}
+		catch(InterruptedException e)
+		{
+			System.out.println(e);
+			el = null;
+		}
 
 		return el;
 	}
