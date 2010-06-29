@@ -35,7 +35,7 @@ public class Mensagem
 		IDcont++;
 	}
 
-	public Mensagem(String msg)
+	public Mensagem()
 	{
 		this.ID = IDcont;
 		this.Orig_Cel = (int) (random() *100000000);
