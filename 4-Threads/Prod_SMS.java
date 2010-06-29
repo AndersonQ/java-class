@@ -27,20 +27,26 @@ public class Prod_SMS implements Runnable
 		this.f = f;
 	}
 
-	@overrride
 	public void run()
 	{
-		double tempo = 0.6 + ramdon() * 0.8;
+		int tempo = 600 + (int) (random() * 800);
 		try
 		{
-			Tread.sleep(tempo);
+			Thread.sleep(tempo);
 		}
 		catch (InterruptedException e)
 		{
 			e.printStackTrace();
 		}
 
-		f.insere(new Mensagem());
+		try
+		{
+			f.insere(new Mensagem());
+		}
+		catch(InterruptedException e)
+		{
+			System.out.println(e);
+		}
 	}
 
 }

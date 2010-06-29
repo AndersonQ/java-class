@@ -2,7 +2,7 @@
 
 all: SMS
 
-SMS: Mensagem.class FilaPC.class
+SMS: Mensagem.class FilaPC.class Prod_SMS.calss
 
 Mensagem.class: Mensagem.java
 	javac Mensagem.java
