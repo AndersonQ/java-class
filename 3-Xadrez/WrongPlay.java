@@ -24,11 +24,15 @@ public class WrongPlay extends IOException
 
 	public WrongPlay(String msg)
 	{
-		super(msg);
 		this.msg = msg;
 	}
 
-	public String PrintWrongPlay()
+	public String get_WrongPlay()
+	{
+		return msg;
+	}
+
+	public String toString()
 	{
 		return msg;
 	}

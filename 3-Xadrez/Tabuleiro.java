@@ -60,6 +60,9 @@ public class Tabuleiro
 
 		p = board[li][ci];
 		
+		if( p == null )
+			throw new WrongPlay("Não existe peça nessa posição!");
+
 		if ( p.get_cor() != NextPlay )
 			throw new WrongPlay("Não é a vez das " + p.get_cor() + "s jogar");
 		try

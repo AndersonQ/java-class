@@ -2,7 +2,7 @@
 
 all: Xadrez
 
-Xadrez: Pecas.class Cavalo.class Rei.class Jogadas.class Xadrez.java
+Xadrez.class: Pecas.class Cavalo.class Rei.class Jogadas.class Xadrez.java
 	javac Xadrez.java
 
 Pecas.class: Pecas.java
@@ -20,7 +20,7 @@ Jogadas.class: Jogadas.java
 Tabuleiro.class: Tabuleiro.java
 	javac Tabuleiro.java
 
-play: Xadrez
+play: Xadrez.class
 	java Xadrez
 
 
