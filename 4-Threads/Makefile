@@ -2,7 +2,7 @@
 
 all: SMS
 
-SMS: Mensagem.class FilaPC.class Prod_SMS.class Cons_SMS.class CentralSMS.class
+SMS: Mensagem.class FilaPC.class Prod_SMS.class Cons_SMS.class CentralSMS.class Envia_SMS.class
 
 Mensagem.class: Mensagem.java
 	javac Mensagem.java
@@ -18,6 +18,12 @@ Cons_SMS.class: Cons_SMS.java
 
 CentralSMS.class: CentralSMS.java
 	javac CentralSMS.java
+
+Envia_SMS.class:
+	javac Envia_SMS.java
+
+run: SMS
+	java Envia_SMS
 
 clean:
 	@rm -vf *.class *.backup *~
