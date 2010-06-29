@@ -30,6 +30,9 @@ public class Cons_SMS implements Runnable
 	public void run()
 	{
 		Mensagem m = null;
+
+		while(true)
+		{
 		int tempo = 200 + (int) (random() * 600);
 
 		try
@@ -43,6 +46,7 @@ public class Cons_SMS implements Runnable
 		}
 
 		System.out.println(m + "Enviada para o celular " + m.get_Dest_cel());
+		}
 	}
 }
 
