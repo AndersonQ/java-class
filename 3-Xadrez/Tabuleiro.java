@@ -58,6 +58,9 @@ public class Tabuleiro
 		Pecas p;
 		boolean ok;
 
+		if ( (li < 0 || li > 8 || ci < 0 || ci > 8 || lf < 0 || lf > 8 || cf < 0 || cf > 8) )
+			throw new WrongPlay("A posição (" + li + "," + ci + ") ou (" + lf + "," + cf + ") não existe no tabuleiro!");
+
 		p = board[li][ci];
 	
 		//Verifica se existe peça na posição indicada	
