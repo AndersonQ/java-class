@@ -44,7 +44,7 @@ public class Mensagem
 		IDcont++;
 	}
 
-	public String get_msg()
+	public String toString()
 	{
 		return msg;
 	}
