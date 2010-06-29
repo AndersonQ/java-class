@@ -16,19 +16,18 @@
  * =====================================================================================
  */
 
-public class FilaPC extends Fila
+public class FilaPC<Tipo> extends Fila<Tipo>
 {
 	public FilaPC(int i)
 	{
 		super(i);
 	}
 
-	public synchronized void insere(Mensagem el) throws InterruptedException
+	public synchronized void insere(Tipo el) throws InterruptedException
 	{
 		try
 		{
-
-			if (cheia() == true)
+			if (cheia())
 				this.wait();
 		
 			super.insere(el);
@@ -41,18 +40,18 @@ public class FilaPC extends Fila
 		}
 	}
 
-	public Mensagem retira() throws InterruptedException
+	public synchronized Tipo retira() throws InterruptedException
 	{
-		Mensagem el;
+		Tipo el;
 
 		try
 		{
-			if (vazia() == true)
+			if (vazia())
 				this.wait();
 
-			el = (Mensagem) super.retira();
+			el = super.retira();
 
-			this.notify();
+			this.notifyAll();
 		}
 		catch(InterruptedException e)
 		{
