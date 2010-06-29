@@ -21,11 +21,11 @@ import java.util.ArrayList;
 
 public class Tabuleiro
 {
-	protected ArrayList<Jogadas> jogadas;
-	protected Pecas [][] board;
-	protected ArrayList<Pecas> capturadas;
-	private String NextPlay;
-	private int j;
+	protected ArrayList<Jogadas> jogadas;//Lista das jogadas realizadas
+	protected Pecas [][] board;//Tabuleiro
+	protected ArrayList<Pecas> capturadas;//Lista das peças capturadas
+	private String NextPlay;//Cor que deve jogar
+	private int j;//Conta as jogadas
 
 	public Tabuleiro()
 	{
@@ -59,43 +59,64 @@ public class Tabuleiro
 		boolean ok;
 
 		p = board[li][ci];
-		
+	
+		//Verifica se existe peça na posição indicada	
 		if( p == null )
 			throw new WrongPlay("Não existe peça nessa posição!");
 
+		//Verifica se é a vez da cor jogar
 		if ( p.get_cor() != NextPlay )
 			throw new WrongPlay("Não é a vez das " + p.get_cor() + "s jogar");
-		try
-		{
+		//Tenta Jogar
+		//try
+		//{
 			ok = p.move(lf,cf);
-		}
-		catch(WrongPlay e)
-		{
-			System.out.println(e);
-			ok = false;
-		}
+		//}
+		//catch(WrongPlay e)
+		//{
+			//System.out.println(e);
+			//ok = false;
+		//}
 		
-
+		//Se a jogada é possível
 		if (ok == true)
 		{
 			Jogadas jo = new Jogadas(p, j, li, ci, lf, cf);
-			if ( board[lf][cf] != null && (board[lf][cf]).cor != NextPlay )
+			//Verifica se ocorre captura
+			if ( board[lf][cf] != null)
 			{
-				capturadas.add(board[lf][cf]);
-				(board[lf][cf]).set_capturada(jo);
+				if ((board[lf][cf]).get_cor() != NextPlay ) //board[lf][cf] != null && (board[lf][cf]).get_cor() != NextPlay )
+				{
+					capturadas.add(board[lf][cf]);
+					(board[lf][cf]).set_capturada(jo);
+				}
+				else
+					throw new WrongPlay("Jogada Inválida! " + p.get_cor() + "s" + "não pode capturar peças " + (board[lf][cf]).get_cor() + "s!");
 			}
+
+			//Move as peças no tabuleiro
 			board[li][ci] = null;
 			board[lf][cf] = p;
+			//Adiciona a jogada na lista de jogadas
 			jogadas.add(jo);
+			//Incrementa o contador de jogadas
 			j++;
 
+			//Decide quem é a próxima cor a jogar
 			NextPlay = (NextPlay == "branca") ? "preta" : "branca";
+			//Informa a jogada realizada
 			System.out.println( "Jogada: " + ( jogadas.get( jogadas.size() -1 ) ).print_play() );
 		}
-
+		else
+		{
+			//Lança exceção caso a jogada não seja possóvel
+			throw new WrongPlay("Jogada inválida para " + p.get_categoria() + " " + (p.get_cor()).substring(0, (p.get_cor()).length() - 2) + "o");
+		}
+		//Retorna true pata jogada efetuada e false para não efetuada
 		return ok;
 	}
 
+	//============================================print_board()
 	public void print_board()
 	{
 		for (int k = 0; k < 8; k++)
