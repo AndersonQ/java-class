@@ -40,7 +40,7 @@ public class Jogadas
 	public String print_play()
 	{
 		String s = new String();
-		s = s.format("%d°: %s de (%d,%d,) para (%d,%d) em %s", j, p.get_nome(), li, ci, lf, cf, tempo);
+		s = s.format("%d°: %s de (%d,%d) para (%d,%d) em %s", j, p.get_nome(), li, ci, lf, cf, tempo);
 		return s;
 	}
 }
