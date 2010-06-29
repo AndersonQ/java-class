@@ -27,16 +27,25 @@ public class Rei extends Pecas{
 		nome = name;
 		cor = color;
 		categoria = category;
-		capturada = false;
+		capturada = null;//false;
 		l = x;
 		c = y;
 	}
 
 	public boolean move(int x, int y) throws WrongPlay
 	{
-		if ( hypot( (x - l), (y - c) ) == 1)
+		if ( hypot( (x - l), (y - c) ) == 1 || hypot( (x - l), (y - c) ) < 2)
+		{
+			l = x;
+			c = y;
 			return true;
+		}
 		else
 			throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");
+	}
+
+	private double hypot2(int x, int y)
+	{
+		return (pow( (x - l) , 2) + pow( (y - c), 2)); 
 	}
 }

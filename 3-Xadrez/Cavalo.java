@@ -27,7 +27,7 @@ public class Cavalo extends Pecas{
 		nome = name;
 		cor = color;
 		categoria = category;
-		capturada = false;
+		capturada = null;//false;
 		l = x;
 		c = y;
 	}
@@ -35,7 +35,11 @@ public class Cavalo extends Pecas{
 	public boolean move(int x, int y) throws WrongPlay
 	{
 		if ( hypot2(x,y) == 5)
+		{
+			l = x;
+			c = y;
 			return true;
+		}
 		else
 		{
 			throw new WrongPlay("Jogada inválida para " + categoria + " " + cor.substring(0, cor.length() - 2) + "o");

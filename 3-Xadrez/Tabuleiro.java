@@ -71,16 +71,22 @@ public class Tabuleiro
 		}
 		catch(WrongPlay e)
 		{
-			System.out.println(e.PrintWrongPlay());
+			System.out.println(e);
 			ok = false;
 		}
 		
 
 		if (ok == true)
 		{
+			Jogadas jo = new Jogadas(p, j, li, ci, lf, cf);
+			if ( board[lf][cf] != null && (board[lf][cf]).cor != NextPlay )
+			{
+				capturadas.add(board[lf][cf]);
+				(board[lf][cf]).set_capturada(jo);
+			}
 			board[li][ci] = null;
 			board[lf][cf] = p;
-			jogadas.add(new Jogadas(p, j, li, ci, lf, cf));
+			jogadas.add(jo);
 			j++;
 
 			NextPlay = (NextPlay == "branca") ? "preta" : "branca";
@@ -92,8 +98,14 @@ public class Tabuleiro
 
 	public void print_board()
 	{
+		for (int k = 0; k < 8; k++)
+			System.out.printf("\t  %d", k);
+
+		System.out.printf("\n");
+
 		for (int i = 0; i < 8; i++)
 		{
+			System.out.print(i);
 			for (int j = 0; j <8; j++)
 			{
 				if (board[i][j] == null)
@@ -114,5 +126,20 @@ public class Tabuleiro
 		{
 			System.out.println(j.print_play());
 		}
+	}
+
+	public void list_capturadas()
+	{
+		System.out.println("Capturadas:");
+		for(Pecas c : capturadas)
+		{
+			System.out.print(c.get_nome());
+			System.out.println(" em " + c.get_capturada());
+		}
+	}
+
+	public String who_play()
+	{
+		return NextPlay;
 	}
 }

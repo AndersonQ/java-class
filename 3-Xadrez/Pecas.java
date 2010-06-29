@@ -24,7 +24,7 @@ public abstract class Pecas{
 	protected String cor;
 	protected String categoria;
 	protected int l, c;
-	protected boolean capturada;
+	protected Jogadas capturada;
 
 	public abstract boolean move(int x, int y) throws WrongPlay;
 
@@ -41,6 +41,16 @@ public abstract class Pecas{
 	public String get_categoria()
 	{
 		return categoria;
+	}
+
+	public String get_capturada()
+	{
+		return capturada.print_play();
+	}
+
+	public void set_capturada(Jogadas j)
+	{
+		capturada = j;
 	}
 }
 
