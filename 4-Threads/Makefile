@@ -25,5 +25,12 @@ Envia_SMS.class:
 run: SMS
 	java Envia_SMS
 
+jar: main-class SMS
+	jar cfm SMS.jar main-class *.java *.class
+
+tar:
+	rm -vf SMS.tar.bz2
+	tar -jcvf SMS.tar.bz2 *
+
 clean:
 	@rm -vf *.class *.backup *~
