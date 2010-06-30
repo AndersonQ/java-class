@@ -2,7 +2,10 @@
 
 all: SMS
 
-SMS: Mensagem.class FilaPC.class Prod_SMS.class Cons_SMS.class CentralSMS.class Envia_SMS.class
+SMS: Mensagem.class FilaPC.class Prod_SMS.class Cons_SMS.class CentralSMS.class Envia_SMS.class Fila.class
+
+Fila.class: Fila.java
+	javac Fila.java
 
 Mensagem.class: Mensagem.java
 	javac Mensagem.java

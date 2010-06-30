@@ -27,12 +27,12 @@ public class FilaPC<Tipo> extends Fila<Tipo>
 	{
 		try
 		{
-			if (cheia())
+			while (cheia())
 				this.wait();
 		
 			super.insere(el);
 		
-			this.notify();
+			this.notifyAll();
 		}
 		catch(InterruptedException e)
 		{
@@ -46,11 +46,12 @@ public class FilaPC<Tipo> extends Fila<Tipo>
 
 		try
 		{
-			if (vazia())
+			while (vazia())
+			{
 				this.wait();
+			}
 
 			el = super.retira();
-
 			this.notifyAll();
 		}
 		catch(InterruptedException e)

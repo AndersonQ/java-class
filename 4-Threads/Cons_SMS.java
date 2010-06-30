@@ -21,6 +21,7 @@ import static java.lang.Math.*;
 public class Cons_SMS implements Runnable
 {
 	FilaPC<Mensagem> f;
+	int i = - Integer.MAX_VALUE;
 
 	public Cons_SMS(FilaPC<Mensagem> f)
 	{
@@ -31,21 +32,22 @@ public class Cons_SMS implements Runnable
 	{
 		Mensagem m = null;
 
-		while(true)
+		while(i < Integer.MAX_VALUE)
 		{
-		int tempo = 200 + (int) (random() * 600);
+			int tempo = 200 + (int) (random() * 600);
 
-		try
-		{
-			Thread.sleep(tempo);
-			m = (Mensagem) f.retira();
-			System.out.println(m + " Enviada para o celular " + m.get_Dest_cel());
-		}
-		catch (InterruptedException e)
-		{
-			System.out.println(e);
-			return;
-		}
+			try
+			{
+				Thread.sleep(tempo);
+				m = (Mensagem) f.retira();
+				System.out.println(m + " Enviada para o celular " + m.get_Dest_cel());
+				i++;
+			}
+			catch (InterruptedException e)
+			{
+				System.out.println(e);
+				return;
+			}
 
 		}
 	}

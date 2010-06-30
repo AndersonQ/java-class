@@ -28,20 +28,18 @@ public class Mensagem
 
 	public Mensagem(int Orig_Cel, int Dest_Cel, String msg)
 	{
-		this.ID = IDcont;
+		this.ID = IDcont++;
 		this.Orig_Cel = Orig_Cel;
 		this.Dest_Cel = Dest_Cel;
 		this.msg = msg;
-		IDcont++;
 	}
 
 	public Mensagem()
 	{
-		this.ID = IDcont;
+		this.ID = IDcont++;
 		this.Orig_Cel = (int) (random() *100000000);
 		this.Dest_Cel = (int) (random() *100000000);
 		this.msg = "Mensagem aleatória " + ID;
-		IDcont++;
 	}
 
 	public String toString()

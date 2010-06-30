@@ -22,18 +22,20 @@ public class CentralSMS
 
 	public CentralSMS()
 	{
-		f = new FilaPC<Mensagem>(1000);
+		f = new FilaPC<Mensagem>(100);
 	}
 
 	public void start()
 	{
 		Cons_SMS c = new Cons_SMS(f);
+		Cons_SMS c1 = new Cons_SMS(f);
 
 		Prod_SMS p1 = new Prod_SMS(f);
 		Prod_SMS p2 = new Prod_SMS(f);
 		Prod_SMS p3 = new Prod_SMS(f);
 
 		Thread C = new Thread(c);
+		Thread C1 = new Thread(c1);
 
 		Thread P1 = new Thread(p1);
 		Thread P2 = new Thread(p2);
@@ -44,5 +46,6 @@ public class CentralSMS
 		P3.start();
 
 		C.start();
+		C1.start();
 	}
 }

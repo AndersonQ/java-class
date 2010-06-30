@@ -27,11 +27,11 @@ class Fila <Tipo> {
         return el;
     }
 
-    public boolean cheia() {
+    public synchronized boolean cheia() {
         return n_elementos == elementos.length;
     }
 
-    public boolean vazia(){
+    public synchronized boolean vazia(){
         return n_elementos == 0;
     }
 

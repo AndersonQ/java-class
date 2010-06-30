@@ -21,6 +21,7 @@ import static java.lang.Math.*;
 public class Prod_SMS implements Runnable
 {
 	FilaPC<Mensagem> f;
+	int i = - Integer.MAX_VALUE;
 
 	public Prod_SMS(FilaPC<Mensagem> f)
 	{
@@ -29,19 +30,20 @@ public class Prod_SMS implements Runnable
 
 	public void run()
 	{
-		while(true)
+		while(i < Integer.MAX_VALUE)
 		{
 
-		int tempo = 600 + (int) (random() * 800);
-		try
-		{
-			Thread.sleep(tempo);
-			f.insere(new Mensagem());
-		}
-		catch(InterruptedException e)
-		{
-			System.out.println(e);
-		}
+			int tempo = 600 + (int) (random() * 800);
+			try
+			{
+				Thread.sleep(tempo);
+				f.insere(new Mensagem());
+				i++;
+			}
+			catch(InterruptedException e)
+			{
+				System.out.println(e);
+			}
 
 		}
 	}
