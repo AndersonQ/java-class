@@ -32,6 +32,7 @@ jar: main-class SMS
 	jar cfm SMS.jar main-class *.java *.class
 
 tar:
+	make clean
 	rm -vf SMS.tar.bz2
 	tar -jcvf SMS.tar.bz2 *
 
