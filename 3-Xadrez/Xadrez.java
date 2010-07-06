@@ -58,10 +58,18 @@ public class Xadrez
 			t.play(0,1,2,0);
 			t.print_board();
 			System.out.println("\n");
+		}
+		catch (WrongPlay e)
+		{
+			System.out.println(e);
+		}
+		
+		try
+		{
+			System.out.println("Tentando capturar peças da mesma cor:");
 			t.play(6,6,7,6);
 			t.print_board();
 			System.out.println("\n");
-
 		}
 		catch (WrongPlay e)
 		{
@@ -72,6 +80,18 @@ public class Xadrez
 		{
 			System.out.printf("\nTentando usar uma casa vazia como início da jogada\n");
 			t.play(7,4,7,5);
+			t.print_board();
+			System.out.println("\n");
+		}
+		catch (WrongPlay e)
+		{
+			System.out.println(e);
+		}
+		
+		try
+		{
+			System.out.printf("\nTentando usar uma casa que não existe no tabuleiro\n");
+			t.play(10,10,1,1);
 			t.print_board();
 		}
 		catch (WrongPlay e)
