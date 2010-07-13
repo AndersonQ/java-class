@@ -26,6 +26,7 @@ public class ConexaoCliente implements Runnable
 	ServerSocket server;
 	Fila fm;
 	String nick;
+	int ID = 0;
 
 	ConexaoCliente(int porta, Fila fm, String nick)
 	{
@@ -39,6 +40,7 @@ public class ConexaoCliente implements Runnable
 		}
 
 		this.fm = fm;
+		ID++;
 
 	}
 
@@ -54,7 +56,8 @@ public class ConexaoCliente implements Runnable
 		}
 
 		this.fm = fm;
-		this.nick = "Nick Genérico";
+		this.nick = ("Alguém" + ID);
+		ID++;
 
 	}
 
