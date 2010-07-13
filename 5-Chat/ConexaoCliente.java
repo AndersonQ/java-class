@@ -28,7 +28,7 @@ public class ConexaoCliente implements Runnable
 	Socket novaConexao;
 	int ID = 0;
 
-	ConexaoCliente(Socket novaConexcao, int porta, Fila fm, String nick)
+	ConexaoCliente(Socket novaConexcao, Fila fm, String nick)
 	{
 		this.novaConexao = novaConexcao;
 		this.fm = fm;
@@ -36,7 +36,7 @@ public class ConexaoCliente implements Runnable
 
 	}
 
-	ConexaoCliente(Socket novaConexcao, int porta, Fila fm)
+	ConexaoCliente(Socket novaConexcao, Fila fm)
 	{
 		this.novaConexao = novaConexcao;
 		this.fm = fm;
