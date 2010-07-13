@@ -33,7 +33,6 @@ public class ConexaoCliente implements Runnable
 		this.novaConexao = novaConexcao;
 		this.fm = fm;
 		ID++;
-
 	}
 
 	ConexaoCliente(Socket novaConexcao, Fila fm)
@@ -42,7 +41,6 @@ public class ConexaoCliente implements Runnable
 		this.fm = fm;
 		this.nick = ("Alguém" + ID);
 		ID++;
-
 	}
 
 	public void run()
