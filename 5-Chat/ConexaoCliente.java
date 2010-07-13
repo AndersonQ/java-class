@@ -23,7 +23,7 @@ import java.io.*;
 
 public class ConexaoCliente implements Runnable
 {
-	Fila fm;
+	Fila<Mensagem> fm;
 	String nick;
 	Socket novaConexao;
 	int ID = 0;

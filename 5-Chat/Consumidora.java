@@ -20,7 +20,7 @@ import java.util.*;
 
 public class Consumidora implements Runnable
 {
-	Fila fm;
+	Fila<Mensagem> fm;
 
 	Consumidora(Fila fm)
 	{
