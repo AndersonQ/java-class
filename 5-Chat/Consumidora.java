@@ -33,7 +33,9 @@ public class Consumidora implements Runnable
 		{
 			try
 			{
-				System.out.printf("%s\n", fm.retira());
+				Mensagem m = fm.retira();
+				Date d = m.get_data();
+				System.out.printf("[%d:%d:%d] %s diz:\n%s\n", d.getHours(), d.getMinutes(), d.getSeconds(), m.get_nick(), m.get_msg() );
 			}
 			catch(Exception e)
 			{

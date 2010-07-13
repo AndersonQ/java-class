@@ -44,7 +44,8 @@ public class Servidor
 
 		t1.start();
 
-		while(true)
+		boolean ok = true;
+		while(ok != false)
 		{
 			ConexaoCliente cc = null;
 			try
@@ -54,6 +55,7 @@ public class Servidor
 			catch(Exception e)
 			{
 				System.out.println(e);
+				ok = false;
 			}
 
 			Thread t2 = new Thread(cc);

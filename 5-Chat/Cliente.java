@@ -24,6 +24,7 @@ public class Cliente
 {
 	public static void main(String[] args)
 	{
+		boolean ok = true;
 		Socket Conexao = null;
 		DataOutputStream stream_out = null;
 		try
@@ -38,7 +39,7 @@ public class Cliente
 
 		JOptionPane j = new JOptionPane();
 
-		while(true)
+		while(ok != false)
 		{
 			try
 			{
@@ -47,7 +48,7 @@ public class Cliente
 			catch(Exception e)
 			{
 				System.out.println(e);
-				break;
+				ok = false;
 			}
 		}
 

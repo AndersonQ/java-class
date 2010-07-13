@@ -26,7 +26,7 @@ public class ConexaoCliente implements Runnable
 	Fila<Mensagem> fm;
 	String nick;
 	Socket novaConexao;
-	int ID = 0;
+	static int ID = 0;
 
 	ConexaoCliente(Socket novaConexcao, Fila fm, String nick)
 	{
@@ -39,7 +39,7 @@ public class ConexaoCliente implements Runnable
 	{
 		this.novaConexao = novaConexcao;
 		this.fm = fm;
-		this.nick = ("Alguém" + ID);
+		this.nick = ("Alguém " + ID);
 		ID++;
 	}
 
@@ -47,7 +47,8 @@ public class ConexaoCliente implements Runnable
 	{
 		DataInputStream stream_in;
 
-		while(true)
+		boolean ok = true;
+		while(ok != false)
 		{
 			try
 			{
@@ -57,6 +58,7 @@ public class ConexaoCliente implements Runnable
 			catch(Exception e)
 			{
 				System.out.println(e);
+				ok = false;
 			}
 
 		}
