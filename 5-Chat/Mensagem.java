@@ -21,13 +21,17 @@ import java.util.*;
 public class Mensagem
 {
 	private String nick;
+	private Steing sender;
+	private String origin;
 	private Date data;
 	private String msg;
 
-	public Mensagem(String nick, String msg)
+	public Mensagem(String nick, String msg, Steing sender, String origin)
 	{
 		this.nick = nick;
 		this.msg = msg;
+		this.sender = sender;
+		this.origin = origin;
 		this.data = new Date();
 	}
 

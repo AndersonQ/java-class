@@ -39,8 +39,12 @@ public class Consumidora implements Runnable
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
+				e.printStackTrace();
 			}
 		}
 	}
+
+	private send_msg()
+	{
+
 }

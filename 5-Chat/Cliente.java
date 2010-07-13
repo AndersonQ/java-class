@@ -27,14 +27,17 @@ public class Cliente
 		boolean ok = true;
 		Socket Conexao = null;
 		DataOutputStream stream_out = null;
+		DataInStream stream_in = null;
+		
 		try
 		{
 			Conexao = new Socket("127.0.0.1", 2010);
 			stream_out = new DataOutputStream(Conexao.getOutputStream());
+			stream_in = new DataInStream(Conexao.getInStream());
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			e.printStackTrace();
 		}
 
 		JOptionPane j = new JOptionPane();
@@ -50,6 +53,11 @@ public class Cliente
 				System.out.println(e);
 				ok = false;
 			}
+			try
+			{
+				j.showMessageDialog(null, stream_in.readUTF());
+			}
+			catch(Exception e){}
 		}
 
 	}

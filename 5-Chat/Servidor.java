@@ -21,6 +21,7 @@ import java.net.*;
 public class Servidor
 {
 	Fila<Mensagem> fm;
+	Fila<ConexaoCliente> fcc;
 	ServerSocket server;
 
 	public Servidor(int num)
@@ -34,7 +35,8 @@ public class Servidor
 			System.out.println(e);
 		}
 
-		fm = new Fila<Mensagem>(1000);
+		fm = new Fila<Mensagem>(100);
+		fcc = new Fila<ConexaoCliente>(100);
 	}
 
 	public void run()
@@ -51,10 +53,11 @@ public class Servidor
 			try
 			{
 				cc = new ConexaoCliente(server.accept(), fm);
+				fcc.insere(cc);
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
+				e.printStackTrace();
 				ok = false;
 			}
 

@@ -53,11 +53,11 @@ public class ConexaoCliente implements Runnable
 			try
 			{
 				stream_in = new DataInputStream(novaConexao.getInputStream());
-				fm.insere( new Mensagem(nick, (String) stream_in.readUTF() ) );
+				fm.insere( new Mensagem(nick, stream_in.readUTF() ) );
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
+				//e.printStackTrace();
 				ok = false;
 			}
 
