@@ -23,38 +23,22 @@ import java.io.*;
 
 public class ConexaoCliente implements Runnable
 {
-	ServerSocket server;
 	Fila fm;
 	String nick;
+	Socket novaConexao;
 	int ID = 0;
 
-	ConexaoCliente(int porta, Fila fm, String nick)
+	ConexaoCliente(Socket novaConexcao, int porta, Fila fm, String nick)
 	{
-		try
-		{
-			server = new ServerSocket(porta);
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-
+		this.novaConexao = novaConexcao;
 		this.fm = fm;
 		ID++;
 
 	}
 
-	ConexaoCliente(int porta, Fila fm)
+	ConexaoCliente(Socket novaConexcao, int porta, Fila fm)
 	{
-		try
-		{
-			server = new ServerSocket(porta);
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-
+		this.novaConexao = novaConexcao;
 		this.fm = fm;
 		this.nick = ("Alguém" + ID);
 		ID++;
@@ -63,19 +47,7 @@ public class ConexaoCliente implements Runnable
 
 	public void run()
 	{
-		Socket novaConexao = null;
 		DataInputStream stream_in;
-
-		try
-		{
-			novaConexao = server.accept();
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-
-
 
 		while(true)
 		{
