@@ -17,13 +17,15 @@
  */
 
 import java.net.*;
+import java.util.*;
+import java.io.*;
 
 
-public class ConexaoCliente implements Thread
+public class ConexaoCliente implements Runnable
 {
 	ServerSocket server;
 	Fila fm;
-	String nick
+	String nick;
 
 	ConexaoCliente(int porta, Fila fm, String nick)
 	{
@@ -33,7 +35,7 @@ public class ConexaoCliente implements Thread
 		}
 		catch(Exception e)
 		{
-			Sytem.out.println(e);
+			System.out.println(e);
 		}
 
 		this.fm = fm;
@@ -48,7 +50,7 @@ public class ConexaoCliente implements Thread
 		}
 		catch(Exception e)
 		{
-			Sytem.out.println(e);
+			System.out.println(e);
 		}
 
 		this.fm = fm;
@@ -56,19 +58,35 @@ public class ConexaoCliente implements Thread
 
 	}
 
-	public run()
+	public void run()
 	{
-		Socket novaConexao = server.accept();
-		DataInputStrean strean_in;
+		Socket novaConexao = null;
+		DataInputStream stream_in;
+
+		try
+		{
+			novaConexao = server.accept();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+
+
 
 		while(true)
 		{
-			strean_in = new DataInputStream(novaConexao.getImputStream());
-			fm.insere( new Menssagem(nick, stream_in.readUTF(), nick );
+			try
+			{
+				stream_in = new DataInputStream(novaConexao.getInputStream());
+				fm.insere( new Mensagem(nick, (String) stream_in.readUTF() ) );
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
 
 		}
 	}
 
 }
-
-
