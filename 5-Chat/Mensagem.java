@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Menssagem.java
+ *       Filename:  Mensagem.java
  *
  *    Description:  
  *
@@ -16,34 +16,34 @@
  * =====================================================================================
  */
 
+import java.util.*;
+
 public class Mensagem
 {
 	private String nick;
 	private Date data;
 	private String msg;
 
-	public Menssagem(String nick, String msg)
+	public Mensagem(String nick, String msg)
 	{
 		this.nick = nick;
 		this.msg = msg;
-		this.data = new Date()
+		this.data = new Date();
 	}
 
-	public get_msg()
+	public String get_msg()
 	{
 		return msg;
 	}
 
-	public get_nick()
+	public String get_nick()
 	{
 		return nick;
 	}
 
-	public get_data()
+	public Date get_data()
 	{
 		return data;
 	}
-
-}
 
 }
