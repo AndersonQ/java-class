@@ -42,7 +42,7 @@ public class Servidor
 		Consumidora c1 = new Consumidora(fm);
 		Thread t1 = new Thread(c1);
 
-		t1.run();
+		t1.start();
 
 		while(true)
 		{
@@ -57,7 +57,7 @@ public class Servidor
 			}
 
 			Thread t2 = new Thread(cc);
-			t2.run();
+			t2.start();
 		}
 	}
 }
