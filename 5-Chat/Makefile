@@ -1,6 +1,6 @@
 
 
-all: Mensagem.class ConexaoCliente.class Servidor.class chatServer.class
+all: Mensagem.class ConexaoCliente.class Servidor.class chatServer.class Cliente.class
 
 
 Mensagem.class: Mensagem.java Consumidora.class
@@ -17,6 +17,9 @@ Servidor.class: Servidor.java
 
 chatServer.class: chatServer.java
 	javac chatServer.java
+
+Cliente.class: Cliente.java
+	javac Cliente.java
 
 clean:
 	rm -fv *.backup* *.class
