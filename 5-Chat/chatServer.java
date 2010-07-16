@@ -16,11 +16,17 @@
  * =====================================================================================
  */
 
+import javax.swing.JOptionPane;
+
 public class chatServer
 {
 	public static void main(String[] args)
 	{
-		Servidor s = new Servidor(2010);
+		JOptionPane j = new JOptionPane();
+
+		int porta = Integer.parseInt( j.showInputDialog("Porta deseja usar?"));
+
+		Servidor s = new Servidor(porta);
 		s.run();
 	}
 }

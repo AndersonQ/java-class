@@ -21,10 +21,12 @@ import java.util.*;
 public class Consumidora implements Runnable
 {
 	Fila<Mensagem> fm;
+	ArrayList<ConexaoCliente> fcc;
 
-	Consumidora(Fila fm)
+	Consumidora(Fila fm, ArrayList<ConexaoCliente> fcc)
 	{
 		this.fm = fm;
+		this.fcc = fcc;
 	}
 
 	public void run()
@@ -35,7 +37,14 @@ public class Consumidora implements Runnable
 			{
 				Mensagem m = fm.retira();
 				Date d = m.get_data();
-				System.out.printf("[%d:%d:%d] %s diz:\n%s\n", d.getHours(), d.getMinutes(), d.getSeconds(), m.get_nick(), m.get_msg() );
+				String msg = String.format("[%d:%d:%d] %s", d.getHours(), d.getMinutes(), d.getSeconds(), m.get_msg() );
+
+				System.out.printf("%s", msg );
+
+				for (ConexaoCliente c : fcc)
+				{
+					c.send_msg(msg);
+				}
 			}
 			catch(Exception e)
 			{
@@ -43,8 +52,4 @@ public class Consumidora implements Runnable
 			}
 		}
 	}
-
-	private send_msg()
-	{
-
 }

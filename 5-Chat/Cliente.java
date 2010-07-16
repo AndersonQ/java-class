@@ -24,40 +24,49 @@ public class Cliente
 {
 	public static void main(String[] args)
 	{
-		boolean ok = true;
 		Socket Conexao = null;
 		DataOutputStream stream_out = null;
-		DataInStream stream_in = null;
-		
+		DataInputStream stream_in = null;
+		JOptionPane j = new JOptionPane();
+		int porta;
+		String msg, nick, ip;
+
+		nick = j.showInputDialog("Qual o seu nick?");
+		ip = j.showInputDialog("Qual o ip do servidor?");
+		porta = Integer.parseInt( j.showInputDialog("Porta deseja usar?"));
+
 		try
 		{
-			Conexao = new Socket("127.0.0.1", 2010);
+			Conexao = new Socket(ip, porta);
 			stream_out = new DataOutputStream(Conexao.getOutputStream());
-			stream_in = new DataInStream(Conexao.getInStream());
+			stream_in = new DataInputStream(Conexao.getInputStream());
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		JOptionPane j = new JOptionPane();
-
-		while(ok != false)
+		while(true)
 		{
 			try
 			{
-				stream_out.writeUTF(j.showInputDialog("Digite a mensagem que desejas enviar"));
+				msg = j.showInputDialog("Digite a mensagem que desejas enviar");
+				if (msg == null) break;
+				msg = String.format(" %s diz:\n%s", nick, msg);
+				stream_out.writeUTF(msg);
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
-				ok = false;
+				e.printStackTrace();
 			}
 			try
 			{
 				j.showMessageDialog(null, stream_in.readUTF());
 			}
-			catch(Exception e){}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 	}

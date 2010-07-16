@@ -26,42 +26,54 @@ public class ConexaoCliente implements Runnable
 	Fila<Mensagem> fm;
 	String nick;
 	Socket novaConexao;
-	static int ID = 0;
-
-	ConexaoCliente(Socket novaConexcao, Fila fm, String nick)
-	{
-		this.novaConexao = novaConexcao;
-		this.fm = fm;
-		ID++;
-	}
+	DataOutputStream stream_out;
 
 	ConexaoCliente(Socket novaConexcao, Fila fm)
 	{
 		this.novaConexao = novaConexcao;
 		this.fm = fm;
-		this.nick = ("Alguém " + ID);
-		ID++;
 	}
 
 	public void run()
 	{
-		DataInputStream stream_in;
+		DataInputStream stream_in = null;
 
 		boolean ok = true;
+		
+		try
+		{
+			stream_in = new DataInputStream(novaConexao.getInputStream());
+			stream_out = new DataOutputStream(novaConexao.getOutputStream());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			ok = false;
+		}
+
 		while(ok != false)
 		{
 			try
 			{
-				stream_in = new DataInputStream(novaConexao.getInputStream());
-				fm.insere( new Mensagem(nick, stream_in.readUTF() ) );
+				fm.insere( new Mensagem(stream_in.readUTF() ) );
 			}
 			catch(Exception e)
 			{
-				//e.printStackTrace();
 				ok = false;
 			}
 
 		}
 	}
 
+	protected void send_msg(String msg)
+	{
+		try
+		{
+			stream_out.writeUTF( msg );
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 }

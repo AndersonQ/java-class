@@ -17,11 +17,12 @@
  */
 
 import java.net.*;
+import java.util.ArrayList;
 
 public class Servidor
 {
 	Fila<Mensagem> fm;
-	Fila<ConexaoCliente> fcc;
+	ArrayList<ConexaoCliente> fcc;
 	ServerSocket server;
 
 	public Servidor(int num)
@@ -36,12 +37,12 @@ public class Servidor
 		}
 
 		fm = new Fila<Mensagem>(100);
-		fcc = new Fila<ConexaoCliente>(100);
+		fcc = new ArrayList<ConexaoCliente>();
 	}
 
 	public void run()
 	{
-		Consumidora c1 = new Consumidora(fm);
+		Consumidora c1 = new Consumidora(fm, fcc);
 		Thread t1 = new Thread(c1);
 
 		t1.start();
@@ -53,7 +54,7 @@ public class Servidor
 			try
 			{
 				cc = new ConexaoCliente(server.accept(), fm);
-				fcc.insere(cc);
+				fcc.add(cc);
 			}
 			catch(Exception e)
 			{
