@@ -3,7 +3,7 @@
  *
  *       Filename:  chatServer.java
  *
- *    Description: teste 
+ *    Description:  
  *
  *        Version:  1.0
  *        Created:  13-07-2010 17:58:37
